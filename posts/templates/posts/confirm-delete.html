@@ -1,0 +1,27 @@
+{% extends "posts/base.html" %}
+
+{% block title %}
+Confirm Detele
+{% endblock %}
+
+{% block body %}
+<div class="w3-content w3-margin-top" style="max-width: 1000px;">
+
+  <div class="w3-white w3-card w3-padding">
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <div class="w3-row w3-row container">
+        <label>Are you sure you want to delete the post {{ post.title }}?</label>
+      </div>
+
+      <div class="w3-row w3-container">
+        <a href="{% url 'posts:list' %}" class="w3-button opensans">Back</a>
+        <button type="submit" class="w3-button w3-teal opensans">Delete</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "posts/base.html" %}
+{% block bgcolor %}#fafafa{% endblock  %}
+{% block body %}
+<div class="w3-content w3-margin-top" style="max-width:600px;">
+  <div class="">
+    <div class="w3-white w3-card w3-padding">
+      <form method='POST' action='' enctype='multipart/form-data' class="w3-container">
+        {% csrf_token %}
+        <label class="w3-xlarge w3-block" style="padding-top:10px;">{{title}}</label><br />
+        <span class="w3-text-red w3-medium opensans">{{form.non_field_errors}}</span>
+        <table cellspacing=5 align="center" width="100%">
+          {% for field in form %}
+              <tr>
+                <td>
+                  {{field}}
+                </td>
+              </tr>
+          {% endfor %}
+          <tr>
+            <td>
+              <input type='submit' value='{{button}}' class="w3-block w3-button w3-teal w3-ripple opensans"/>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#" class="w3-block w3-center w3-button opensans">Back</a>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

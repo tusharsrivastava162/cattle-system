@@ -1,0 +1,59 @@
+{% extends "posts/base.html" %}
+{% block title %}
+{{post.title}}
+{% endblock %}
+
+{% block body %}
+<div class="w3-content w3-margin-top" style="max-width: 1000px;">
+  <div class="w3-white w3-card w3-padding w3-margin-bottom">
+
+      <div class="w3-row w3-padding-top">
+        <span class="w3-large opensans">{{post.title}}</span>
+      </div>
+      <div class="w3-row w3-margin-top w3-small w3-text-gray w3-border-bottom">
+        <a href="{% url 'posts:profile' post.owner.id %}" class="w3-text-teal">{{post.owner.first_name}} {{post.owner.last_name}}</a>
+        {% if post.is_modified %}
+          <br /><span>Updated {{post.last_modified_on}}</span>
+        {% endif %}
+        <br><span>Posted {{post.created_on}}</span><br />
+        <p class="w3-hide-large w3-hide-medium tsjustify w3-small w3-text-black">{{post.content}}</p>
+        <p class="w3-hide-small tsjustify w3-large w3-text-black">{{post.content}}</p>
+        <a href="{% url 'posts:detail' post.id %}" class="w3-margin w3-hover-text-black"><i class="material-icons">comment</i></a>
+        {% if post.owner == user%}
+          <a href="{% url 'posts:editpost' post.id %}" class="w3-margin w3-hover-text-black"><i class="material-icons">edit</i></a>
+          <a href="{% url 'posts:deletepost' post.id %}" class="w3-margin w3-hover-text-black"><i class="material-icons">delete</i></a>
+        {% endif %}
+      </div>
+
+      <div class="w3-row w3-small">
+        <div class="w3-row-padding w3-text-gray">
+          <p>
+            {% if post.numberofcomments > 1 %}
+              {{post.numberofcomments}} Comments
+            {% elif post.numberofcomments == 1 %}
+              1 Comment
+            {% endif %}
+          </p>
+        </div>
+        {% for comment in all_comments %}
+          <div class="w3-row w3-border-bottom w3-padding tscommentbg">
+            <div class="w3-row w3-medium w3-text-teal opensans">{{comment.owner.first_name}} {{comment.owner.last_name}}</div>
+            <div class="w3-row w3-tiny w3-text-gray">{{comment.created_on}}</div>
+            <div class="w3-row">{{comment.content}}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="w3-row w3-margin-top">
+        <form method='POST' action='' enctype='multipart/form-data'>
+          {% csrf_token %}
+          {% for field in form %}
+            {{field}}
+          {% endfor %}
+          <input type="submit" value="{{button}}" class="w3-block w3-button w3-teal w3-margin-top opensans">
+        </form>
+      </div>
+
+    </div>
+</div>
+{% endblock %}

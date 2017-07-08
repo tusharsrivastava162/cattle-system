@@ -1,0 +1,25 @@
+{% if is_paginated %}
+  <div class="w3-bar">
+    <div class="pagination w3-center">
+      {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="w3-bar-item w3-left w3-button w3-text-dark-gray">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </a>
+      {% else %}
+        <span class="w3-bar-item w3-left w3-text-white">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </span>
+      {% endif %}
+      <span class="w3-button w3-hover-white w3-text-gray w3-hover-text-gray ">Page {{ page_obj.number }}</span>
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="w3-bar-item w3-right w3-button w3-text-dark-gray">
+          <i class="material-icons">keyboard_arrow_right</i>
+        </a>
+      {% else %}
+        <span class="w3-bar-item w3-right w3-text-white">
+          <i class="material-icons">keyboard_arrow_right</i>
+        </span>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

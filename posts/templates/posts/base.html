@@ -1,0 +1,111 @@
+{% load static %}
+<html>
+
+<head>
+  <title>{% block title %}Home{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Roboto:300|Satisfy|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+{# background static 'posts/materialbackground.jpg' #}
+<body bgcolor="#fafafa">
+  {% if user.username %}
+      {# sidebar starts #}
+    <div class="w3-sidebar w3-bar-block w3-border-right w3-animate-left w3-text-dark-gray tssidenav w3-card" style="display:none" id="sidenav">
+      <button onclick="sidenavclose()" class="w3-bar-item w3-button w3-large w3-hover-light-gray">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </button>
+      <a href="{% url 'posts:profile' user.id %}" class="w3-bar-item w3-text-teal w3-xlarge w3-center">
+        {{user.first_name}} {{user.last_name}}<br><span class="w3-small w3-text-gray">{{user.username}} |
+        <span class="w3-text-blue"> {{user.email}}</span></span>
+      </a>
+      <a href="{% url 'posts:newpost' %}" class="w3-bar-item w3-button w3-hover-light-gray w3-hover-text-black">
+        <table class="opensans">
+          <tr>
+            <td><i class="material-icons">playlist_add</i></td>
+            <td>&nbsp;New Post</td>
+          </tr>
+        </table>
+      </a>
+      <a href="{% url 'posts:list' %}" class="w3-bar-item w3-button w3-hover-light-gray w3-hover-text-black">
+        <table class="opensans">
+          <tr>
+            <td><i class="material-icons">home</i></td>
+            <td>&nbsp;Home</td>
+          </tr>
+        </table>
+      </a>
+      <a href="{% url 'posts:profile' user.id %}" class="w3-bar-item w3-button w3-hover-light-gray w3-hover-text-black">
+        <table class="opensans">
+          <tr>
+            <td><i class="material-icons">account_circle</i></td>
+            <td>&nbsp;My Profile</td>
+          </tr>
+        </table>
+      </a>
+      <a href="{% url 'posts:abesit' %}" class="w3-bar-item w3-button w3-hover-light-gray w3-hover-text-black">
+        <table class="opensans">
+          <tr>
+            <td><i class="material-icons">toys</i></td>
+            <td>&nbsp;ABESIT Webmaster</td>
+          </tr>
+        </table>
+      </a>
+      <a href="{% url 'accounts:logout' %}" class="w3-bar-item w3-button w3-hover-light-gray w3-text-gray w3-hover-text-black">
+        <table class="opensans w3-small w3-right">
+          <tr>
+            <td>&nbsp;Logout</td>
+          </tr>
+        </table>
+      </a>
+    </div>
+      {# sidebar ends #}
+  {% endif %}
+
+  <div class="w3-bar w3-card w3-white">
+    {% if user.username %}
+      <button onclick="sidenavopen();" class="w3-bar-item w3-button w3-large w3-hover-white w3-text-gray">
+        <i class="material-icons">apps</i>
+      </button>
+    {% endif %}
+    <!--a href="#" class="w3-bar-item josefinsans w3-large">tusharsrivastava.in</a>
+    <a href="#" class="w3-bar-item w3-border-left">
+      <table class="w3-text-teal">
+        <tr>
+          <td><i class="material-icons">forum</i></td>
+          <td class="satisfy">&nbsp;forum</td>
+        </tr>
+      </table>
+    </a-->
+    <a href="#" class="w3-bar-item">
+      <table style="color:#004d40;">
+        <tr>
+          <td><i class="material-icons">code</i></td>
+          <td class="josefinsans w3-large">tusharsrivastava.in :</td>
+          <td class="satisfy w3-text-teal">forum</td>
+        </tr>
+      </table>
+    </a>
+  </div>
+
+
+  {% block body %}
+  {% endblock %}
+
+  <p class="tsfooter w3-text-teal">
+    materialdesign.
+  </p>
+
+
+  <script>
+    function sidenavopen() {
+        document.getElementById("sidenav").style.display = "block";
+    }
+    function sidenavclose() {
+        document.getElementById("sidenav").style.display = "none";
+    }
+  </script>
+</body>
+</html>

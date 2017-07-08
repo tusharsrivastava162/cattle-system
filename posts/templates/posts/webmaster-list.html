@@ -1,0 +1,45 @@
+{% extends "posts/base.html" %}
+{% block title %}
+Author@ABESIT
+{% endblock %}
+
+
+{% block body %}
+{# use pagination here #}
+  <div class="w3-content w3-margin-top" style="max-width: 1000px;">
+    <div class="w3-white w3-card">
+
+      {% for article in articles %}
+        <div class="w3-row w3-border-bottom w3-margin-bottom"  style="padding-bottom:25px; padding-top:10px;">
+          <div class="w3-row w3-container">
+            <a href="{{article.link}}" class="w3-large opensans">{{article.title}}</a>
+          </div>
+          <div class="w3-row w3-small w3-container w3-margin-bottom">
+            <a href="#" class="w3-text-teal">Author@ABESIT</a><br>
+          </div>
+          <div class="w3-row">
+            <div class="w3-third w3-container w3-center">
+              <img src="{{article.imgurl}}" class="w3-image w3-border" style="width:100%; max-width: 400px;" />
+            </div>
+            <div class="w3-twothird w3-container">
+              <p class="w3-hide-small w3-hide-medium tsjustify w3-medium w3-text-black">
+                {{article.content}}
+                <a href="{{article.link}}" class="w3-text-blue"> view more</a>
+              </p>
+              <p class="w3-hide-large tsjustify w3-small w3-text-black">
+                {{article.content}}
+                <a href="{{article.link}}" class="w3-text-blue"> view more</a>
+              </p>
+              <a href="#" class="w3-margin w3-hover-text-black"><i class="material-icons">share</i></a>
+              <a href="#" class="w3-margin w3-hover-text-black"><i class="material-icons">bookmark</i></a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      <div class="w3-row w3-container">
+        {% include "posts/pagination.html" %}
+      </div>
+    </div>
+</div>
+{% endblock %}

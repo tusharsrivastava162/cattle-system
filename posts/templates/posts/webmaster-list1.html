@@ -1,0 +1,21 @@
+{% extends "posts/base.html" %}
+{% block title %}
+Author@ABESIT
+{% endblock %}
+
+
+{% block body %}
+{# use pagination here #}
+Author@ABESIT
+  {% for article in articles %}
+    <div class="w3-container w3-card">
+      <h4>
+        <a href="{{article.link}}">{{article.title}}</a>
+      </h4>
+      <img src="{{article.imgurl}}" />
+      <p>{{article.content}}</p>
+    </div>
+  {% endfor %}
+
+  {% include "posts/pagination.html" %}
+{% endblock %}

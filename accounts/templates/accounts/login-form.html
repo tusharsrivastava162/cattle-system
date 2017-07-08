@@ -1,0 +1,45 @@
+{% extends "posts/base.html" %}
+{% block bgcolor %}#fafafa{% endblock  %}
+{% block body %}
+
+<div class="w3-content w3-margin-top" style="max-width: 400px;">
+  <div class="w3-white w3-card w3-margin-bottom" style="padding-top:20px;">
+
+    <form method='POST' action='' enctype='multipart/form-data' class="">
+      {% csrf_token %}
+      <div class="w3-row w3-container">
+        <label class="w3-xlarge w3-text-dark-gray w3-block" style="padding-bottom:5px;">Welcome!</label>
+      </div>
+      <div class="w3-row w3-container">
+        <span class="w3-text-red w3-medium opensans">{{form.non_field_errors}}</span>
+      </div>
+
+      <table cellspacing=10 align="center" width="100%">
+        {% for field in form %}
+            <tr>
+              <td>
+                <i class="material-icons w3-text-gray tsinlineblock">{% cycle 'person' 'vpn_key' %}</i>
+              </td>
+              <td>
+                {{field}}
+              </td>
+            </tr>
+        {% endfor %}
+        <tr>
+          <td colspan="2">
+            <input type='submit' value='{{ title }}'class="w3-block w3-margin-top w3-button w3-teal w3-ripple opensans"/>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <a href="{% url 'accounts:register' %}" class="w3-block w3-center w3-margin-top opensans">No account? <span class="w3-text-blue opensans">Create one</span></a>
+          </td>
+        </tr>
+      </table>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

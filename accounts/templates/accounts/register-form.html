@@ -1,0 +1,33 @@
+{% extends "posts/base.html" %}
+{% block bgcolor %}#fafafa{% endblock  %}
+{% block body %}
+<div class="w3-content w3-margin-top" style="max-width: 500px;">
+  <div class="w3-white w3-card w3-margin-bottom" style="padding-top:10px; padding-bottom:10px;">
+
+    <form method='POST' action='' enctype='multipart/form-data' class="">
+      {% csrf_token %}
+      <div class="w3-row w3-container">
+        <label class="w3-xlarge w3-text-dark-gray w3-block" style="padding-bottom:5px;">Join us!</label>
+      </div>
+      <div class="w3-row w3-container">
+        <span class="w3-text-red w3-medium opensans">{{form.non_field_errors}}</span>
+      </div>
+      {% for field in form %}
+        <div class="w3-row w3-container">
+          {{field}}
+        </div>
+      {% endfor %}
+      <div class="w3-row w3-container">
+        <input type='submit' value='Register' class="w3-block w3-margin-top w3-button w3-teal w3-ripple opensans"/>
+      </div>
+      <div class="w3-row w3-container">
+        <a href="{% url 'accounts:login' %}" class="w3-block w3-center w3-margin-top opensans">
+          Already registered? <span class="w3-text-blue opensans">Sign in</span>
+        </a>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

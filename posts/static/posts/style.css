@@ -1,0 +1,45 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  list-style-type: none;
+}
+.josefinsans  {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.satisfy  {
+  font-family: 'Satisfy', cursive;
+}
+.opensans {
+  font-family: 'Open Sans', sans-serif;
+}
+/*body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}*/
+.tsinlineblock{
+  display: inline-block;
+
+}
+.tscenter{
+  margin:auto;
+}
+.tsfooter{
+  padding-top: 50px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+.tssidenav{
+  width: 300px;
+  max-width: 90%;
+}
+.tsjustify{
+  text-align: justify;
+}
+.tscommentbg{
+  /*background-color: #e0f1f2;*/
+  background-color: rgba(224, 242, 241, 0.4);
+}
+.ts-border-teal{
+  border-top: 3px solid #009688;
+}
