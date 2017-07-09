@@ -1,11 +1,13 @@
 import requests
+
 from bs4 import BeautifulSoup
 
 pages=5
-url = 'http://abesit.in/author/webmaster/page/2/'
+url = 'http://abesit.in/author/webmaster/'
 source_code = requests.get(url)
 plain_text = source_code.text
 soup = BeautifulSoup(plain_text, 'lxml')
+
 fw = open('abesitwebmaster.txt', 'w')
 dict={}
 # title=[]

@@ -41,6 +41,7 @@ class PostDetailView(CreateView):
     def form_valid(self, form, *args, **kwargs):
         form.instance.owner = self.request.user
         form.instance.post_id = Post.objects.get(id=self.kwargs['pk'])
+        form.instance.created_on = datetime.datetime.today()
         currpost=Post.objects.get(id=self.kwargs['pk'])
         currpost.numberofcomments += 1
         currpost.save()
@@ -66,6 +67,8 @@ class PostCreate(CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
+        form.instance.created_on = datetime.datetime.today()
+        form.instance.last_modified_on = datetime.datetime.today()
         return super(PostCreate, self).form_valid(form)
 
     def get_context_data(self, *args, **kwargs):

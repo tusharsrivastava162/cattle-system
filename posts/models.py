@@ -9,9 +9,9 @@ class Post(models.Model):
     title = models.CharField(blank=False, max_length=200)
     content = models.CharField(blank=False, max_length=1500)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_on = models.DateTimeField(blank=False, default=datetime.datetime.today())
+    created_on = models.DateTimeField(blank=False)
     is_modified = models.BooleanField(default=False)
-    last_modified_on = models.DateTimeField(blank=False, default=datetime.datetime.today())
+    last_modified_on = models.DateTimeField(blank=False)
     numberofcomments = models.IntegerField(blank=False, default=0)
 
     def __str__(self):
@@ -30,7 +30,7 @@ class Comment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.CharField(blank=False, max_length=500)
-    created_on = models.DateTimeField(blank=False, default=datetime.datetime.today())
+    created_on = models.DateTimeField(blank=False)
 
     def get_absolute_url(self):
         return reverse('posts:detail', kwargs={'pk':self.post_id.id})
