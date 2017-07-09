@@ -9,7 +9,7 @@ from django import forms
 from posts.models import Post, Comment
 from posts.forms import PostForm, CommentForm
 import datetime
-import requests
+#import requests
 from bs4 import BeautifulSoup
 
 class PostListView(generic.ListView):
