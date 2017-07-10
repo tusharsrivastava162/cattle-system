@@ -5,9 +5,56 @@
   <title>{% block title %}Home{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+  {# <!--link rel="stylesheet" href="{% static 'posts/style.css' %}"--> #}
   <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Roboto:300|Satisfy|Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style media="screen">
+      * {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+    }
+    .josefinsans  {
+    font-family: 'Josefin Sans', sans-serif;
+    }
+    .satisfy  {
+    font-family: 'Satisfy', cursive;
+    }
+    .opensans {
+    font-family: 'Open Sans', sans-serif;
+    }
+    /*body {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }*/
+    .tsinlineblock{
+    display: inline-block;
+
+    }
+    .tscenter{
+    margin:auto;
+    }
+    .tsfooter{
+    padding-top: 50px;
+    padding-bottom: 20px;
+    text-align: center;
+    }
+    .tssidenav{
+    width: 300px;
+    max-width: 90%;
+    }
+    .tsjustify{
+    text-align: justify;
+    }
+    .tscommentbg{
+    /*background-color: #e0f1f2;*/
+    background-color: rgba(224, 242, 241, 0.4);
+    }
+    .ts-border-teal{
+    border-top: 3px solid #009688;
+    }
+  </style>
 </head>
 {# background static 'posts/materialbackground.jpg' #}
 <body bgcolor="#fafafa">
